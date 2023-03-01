@@ -1,0 +1,62 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <!-- [ breadcrumb ] start -->
+
+                    <!-- [ breadcrumb ] end -->
+                    <div class="main-body">
+                        <div class="page-wrapper">
+
+
+                    <div class="container">
+        <h1>Edit Subscription</h1>
+        <form method="post" action="{% url 'subscription_edit' subscription.id %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_name">Name:</label>
+                <input type="text" id="id_name" name="name" value="{{ subscription.name|default:'' }}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="id_description">Description:</label>
+                <textarea id="id_description" name="description" class="form-control">{{ subscription.description|default:'' }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="id_status">Status:</label>
+                <select id="id_status" name="approved_status" class="form-control">
+                    <option value="UNDER REVIEW" {% if subscription.status == StatusApproved.UNDER_REVIEW %}selected{% endif %}>Under Review</option>
+                    <option value="APPROVED" {% if subscription.status == StatusApproved.APPROVED %}selected{% endif %}>Approved</option>
+                    <option value="REJECTED" {% if subscription.status == StatusApproved.REJECTED %}selected{% endif %}>Rejected</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+            <a href="{% url 'subscription_list' %}" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+      </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-SYZKjyOanLzLq3pA+oiaDfxxI1ROmX5q3pPrm5cqf/Wo+VdYK1vQ8RwzIRN25Q7VZcXHvM8pzBIDF/K/84pP0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+    <!-- [ Main Content ] end -->            
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

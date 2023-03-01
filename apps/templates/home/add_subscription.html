@@ -1,0 +1,59 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- [ Main Content ] start -->
+    <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <form method="post" action="{% url 'send_email' %}">
+            {% csrf_token %}
+{#            <div class="mb-3">#}
+{#              <label for="name" class="form-label">Name:</label>#}
+{#              <input type="text" name="name" class="form-control" required>#}
+{#            </div>#}
+            <div class="mb-3">
+              <label for="email" class="form-label">Email:</label>
+              <div class="form-group">
+              <label for="Subscriptions">Subscriptions</label>
+              <select name="subscriptions" class="form-control" id="exampleDropdown">
+                      <option value="ALL" >ALL</option>
+
+                  {% for item in subscriptions %}
+                        <option value="{{ item.id }}" >{{ item.name }}</option>
+                  {% endfor %}
+              </select>
+            </div>
+            </div>
+            <div class="mb-3">
+              <label for="subject" class="form-label">Subject:</label>
+              <input type="text" name="subject" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message:</label>
+              <textarea name="message" class="form-control" rows="10" required></textarea>
+            </div>
+            <div class="mb-3">
+              <button type="submit" class="btn btn-primary">Send Email</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-SYZKjyOanLzLq3pA+oiaDfxxI1ROmX5q3pPrm5cqf/Wo+VdYK1vQ8RwzIRN25Q7VZcXHvM8pzBIDF/K/84pP0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+    <!-- [ Main Content ] end -->            
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

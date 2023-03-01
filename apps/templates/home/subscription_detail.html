@@ -1,0 +1,46 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %} 
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-wrapper">
+
+            <div class="pcoded-content">
+                <div class="pcoded-inner-content">
+                    <!-- [ breadcrumb ] start -->
+
+                    <!-- [ breadcrumb ] end -->
+                    <div class="main-body">
+                        <div class="page-wrapper">
+
+
+                 <div class="container">
+        <h1>{{ subscription.name }}</h1>
+        <p><strong>Description:</strong> {{ subscription.description }}</p>
+        <p><strong>Status:</strong> {{ subscription.status }}</p>
+        <a href="{% url 'subscription_edit' subscription.pk %}" class="btn btn-primary">Edit</a>
+        <a href="{% url 'subscription_delete' subscription.pk %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'subscription_list' %}" class="btn btn-secondary">Back to List</a>
+    </div>
+      </div>
+      </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-SYZKjyOanLzLq3pA+oiaDfxxI1ROmX5q3pPrm5cqf/Wo+VdYK1vQ8RwzIRN25Q7VZcXHvM8pzBIDF/K/84pP0w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+
+    <!-- [ Main Content ] end -->            
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
